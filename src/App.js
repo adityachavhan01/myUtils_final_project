@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import HomePages from './Pages/HomePages';
+import ToDoList from './Pages/ToDoList';
+import PhoneBook from './Pages/PhoneBook';
+import StudentGradeChecker from './Pages/StudentGradeChecker';
 
 function App() {
+
+  const shinyBlackStyle = {
+    background: 'linear-gradient(45deg, #870505, #000000)',
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={shinyBlackStyle}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePages />} />
+          <Route path="/ToDoList" element={<ToDoList />} />
+          <Route path="/PhoneBook" element={<PhoneBook />} />
+          <Route path="/StudentGradeChecker" element={<StudentGradeChecker />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
